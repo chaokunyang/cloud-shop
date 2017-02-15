@@ -1,0 +1,11 @@
+rootProject.name = 'shop'
+include 'shop-home'
+include 'shop-home-admin'
+include 'eureka-server'
+include 'shop-home-service'
+include 'shop-admin-service'
+include 'category-service'
+include 'carousel-service'
+include 'floor-service'
+include 'model'
+

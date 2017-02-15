@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 1111
+eureka:
+  instance:
+    hostname: eureka1
+  client:
+    serviceUrl:
+      defaultZone: http://eureka2:1112/eureka/
+
+# 在hosts文件配置域名映射
+# 127.0.0.1 eureka1
+# 127.0.0.1 eureka2

@@ -1,0 +1,7 @@
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+}

@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: category-service
+  jpa:
+#    hibernate:
+#      ddl-auto:
+#        create-drop
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+        globally_quoted_identifiers: true
+    # disable open EntityManager in View
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop
+    username: shop
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+server:
+  port: 2222
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:1111/eureka/,http://eureka2:1112/eureka/
+
+

@@ -1,0 +1,11 @@
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.thymeleaf:thymeleaf-spring4")
+    compile("org.springframework.cloud:spring-cloud-starter-ribbon")
+    compile("org.springframework.cloud:spring-cloud-starter-eureka")
+    compile project(':model')
+}
