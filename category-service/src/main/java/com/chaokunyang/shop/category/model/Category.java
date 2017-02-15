@@ -1,6 +1,8 @@
 package com.chaokunyang.shop.category.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class Category implements Serializable {
     /**
      * 分类名字
      */
+    @NotNull
+    @Size(min = 2, max = 20)
     private String name;
 
     /**

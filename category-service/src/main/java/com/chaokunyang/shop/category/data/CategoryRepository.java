@@ -1,4 +1,4 @@
-package com.chaokunyang.shop.category;
+package com.chaokunyang.shop.category.data;
 
 import com.chaokunyang.shop.category.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
