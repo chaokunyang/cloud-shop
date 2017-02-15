@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: home
+server:
+  port: 3333
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:1111/eureka/,http://eureka2:1112/eureka/
