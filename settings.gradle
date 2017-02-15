@@ -8,4 +8,5 @@ include 'category-service'
 include 'carousel-service'
 include 'floor-service'
 include 'model'
+include 'commons'
 
