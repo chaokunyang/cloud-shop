@@ -57,17 +57,17 @@
 <!-- 分类 -->
 <div id="category">
     <!--/*@thymesVar id="category" type="com.chaokunyang.shop.model.Category"*/-->
-    <ul th:each="categoryl1 : ${category.getChilds()}">
+    <ul class="level1" th:each="level1 : ${category.getChilds()}">
         <li>
-            <span th:text="${categoryl1.name}">l1 category element name</span>
-            <div class="level1">
-                <ul th:each="categoryl2 : ${categoryl1.getChilds()}">
+            <span th:text="${level1.name}">l1 category element name</span>
+            <div>
+                <ul class="level2" th:each="level2 : ${level1.getChilds()}">
                     <li>
-                        <span th:text="${categoryl2.name}">l2 category element name</span>
-                        <div class="level2">
-                            <ul th:each="categoryl3 : ${categoryl2.getChilds()}">
+                        <span th:text="${level2.name}">l2 category element name</span>
+                        <div>
+                            <ul class="level3" th:each="level3 : ${level2.getChilds()}">
                                 <li>
-                                    <span th:text="${categoryl3.name}">l3 category element name</span>
+                                    <span th:text="${level3.name}">l3 category element name</span>
                                 </li>
                             </ul>
                         </div>

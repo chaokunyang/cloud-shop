@@ -1,11 +1,14 @@
 #category .level1 {
     position: absolute;
-    display: none;
-}
-#category .level1:hover {
-    display: inherit;
 }
 
 #category .level2 {
+    display: none;
+}
+#category .level1:hover .level2 {
+    display: inherit;
+}
 
+#category .level3 {
+    display: inline-block;
 }
