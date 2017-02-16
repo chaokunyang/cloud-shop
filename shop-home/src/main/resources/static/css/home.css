@@ -1,9 +1,12 @@
 #category {
-    width: 40%;
+    width: 30%;
     display: inline-block;
     position: relative;
+    background-color: #777;
+    color: white;
+    font-size: 16px;
 }
 #myCarousel {
-    width: 60%;
+    width: 65%;
     display: inline-block;
 }

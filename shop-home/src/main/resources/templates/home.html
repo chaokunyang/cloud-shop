@@ -24,8 +24,9 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet"/>
+    <link href="../static/css/carousel.css" th:href="@{/css/category.css}" rel="stylesheet"/>
     <link href="../static/css/carousel.css" th:href="@{/css/carousel.css}" rel="stylesheet"/>
-    <link href="../static/css/home.css" th:href="@{/css/carousel.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="navbar-wrapper">
@@ -57,15 +58,15 @@
 <!-- 分类 -->
 <div id="category">
     <!--/*@thymesVar id="category" type="com.chaokunyang.shop.model.Category"*/-->
-    <ul class="level1" th:each="level1 : ${category.getChilds()}">
+    <ul class="level 1" th:each="level1 : ${category.getChilds()}">
         <li>
             <span th:text="${level1.name}">l1 category element name</span>
             <div>
-                <ul class="level2" th:each="level2 : ${level1.getChilds()}">
+                <ul class="level 2" th:each="level2 : ${level1.getChilds()}">
                     <li>
                         <span th:text="${level2.name}">l2 category element name</span>
                         <div>
-                            <ul class="level3" th:each="level3 : ${level2.getChilds()}">
+                            <ul class="level 3" th:each="level3 : ${level2.getChilds()}">
                                 <li>
                                     <span th:text="${level3.name}">l3 category element name</span>
                                 </li>
