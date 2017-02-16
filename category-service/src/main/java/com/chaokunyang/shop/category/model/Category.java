@@ -19,6 +19,11 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 分类层级，从0开始
+     */
+    private Integer level;
+
     @Column(name = "parent_id")
     private Long parentId; // childs建立映射时默认使用的是主键id，而主键是Long，对应bigint，parentId如果是String则对应VARCHAR(255)，两个类型不一样，因此无法建立外键约束成功
 
@@ -43,7 +48,9 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public Category(Long parentId, List<Category> childs, String name, Long orderNumber) {
+    public Category(Long id, Integer level, Long parentId, List<Category> childs, String name, Long orderNumber) {
+        this.id = id;
+        this.level = level;
         this.parentId = parentId;
         this.childs = childs;
         this.name = name;
@@ -56,6 +63,14 @@ public class Category implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public Long getParentId() {
@@ -94,6 +109,7 @@ public class Category implements Serializable {
     public String toString() {
         return "Category{" +
                 "id=" + id +
+                ", level=" + level +
                 ", parentId=" + parentId +
                 ", childs=" + childs +
                 ", name='" + name + '\'' +

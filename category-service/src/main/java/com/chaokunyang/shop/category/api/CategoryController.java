@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 /**
  * @author yangck
@@ -33,7 +34,6 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    /*@RequestMapping(value = "/category/{id}", method = RequestMethod.GET, produces = "application/json")*/
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Category get(@PathVariable Long id) {
         ServiceInstance instance = client.getLocalServiceInstance();
@@ -57,9 +57,23 @@ public class CategoryController {
                 .toUri();
         headers.setLocation(locationUri);
 
-        ResponseEntity<Category> responseEntity = new ResponseEntity<Category>(saved, headers, HttpStatus.CREATED);
+        ResponseEntity<Category> responseEntity = new ResponseEntity<>(saved, headers, HttpStatus.CREATED);
 
         return responseEntity;
+    }
+
+    /**
+     * 集合查询或其他操作都不是资源化的，而是行为化的，因此每种请求方法类型全部写到一个URI，通过查询参数控制行为，而不要每个行为都写一个方法/不同URI
+     * @param level
+     * @param name
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    public List<Category> categories(@RequestParam(value = "level", defaultValue = "0") Integer level, @RequestParam(value = "name", defaultValue = "top") String name) {
+        ServiceInstance instance = client.getLocalServiceInstance();
+        List<Category> categories = categoryService. findByLevelAndName(level, name);
+        logger.info("/category, host:" + instance.getHost() + ", serviceId: " + instance.getServiceId() + ", category level: " + level + ", category name: " + name);
+        return categories;
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)

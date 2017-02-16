@@ -1,7 +1,8 @@
 package com.chaokunyang.shop.category.service;
 
 import com.chaokunyang.shop.category.model.Category;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author chaokunyang
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 public interface CategoryService {
 
     Category findOne(Long id);
+
+    List<Category>  findByLevelAndName(Integer level, String name);
 
     Category save(Category category);
 }

@@ -1,6 +1,6 @@
 package com.chaokunyang.shop.category;
 
-import com.chaokunyang.shop.category.data.CategoryRepository;
+import com.chaokunyang.shop.category.repository.CategoryRepository;
 import com.chaokunyang.shop.category.model.Category;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,10 +23,10 @@ public class CategoryServiceApplicationTest {
 
     @Test
     public void test() {
-        categoryRepository.save(new Category(null, null, "testCategory1", 1L));
-        categoryRepository.save(new Category(null, null, "testCategory2", 100L));
-        categoryRepository.save(new Category(null, null, "testCategory3", 200L));
-        categoryRepository.save(new Category(null, null, "testCategory4", 300L));
+        categoryRepository.save( new Category(1L, 0, null, new ArrayList<>(), "testCategory1", -1L));
+        categoryRepository.save( new Category(null, 0, null, new ArrayList<>(), "testCategory2", -1L));
+        categoryRepository.save( new Category(null, 0, null, new ArrayList<>(), "testCategory3", -1L));
+        categoryRepository.save( new Category(null, 0, null, new ArrayList<>(), "testCategory4", -1L));
 
         Assert.assertEquals(4, categoryRepository.findAll().size());
 
@@ -35,21 +35,21 @@ public class CategoryServiceApplicationTest {
 
     @Test
     public void testData() {
-        Category top = new Category(null, new ArrayList<>(), "top", -1L);
+        Category top = new Category(null, 0, null, new ArrayList<>(), "top", -1L);
 
         Random random = new Random();
         for(int i = 0; i < 10; i++) {
-            Category level1 = new Category(null, new ArrayList<>(), "level1," + i, i * 100L);
+            Category level1 = new Category(null, 1, null, new ArrayList<>(), "level1," + i, i * 100L);
             top.getChilds().add(level1);
 
             int level2Count = 5 + random.nextInt(3);
             for(int j = 0; j < level2Count; j++) {
-                Category level2 = new Category(null, new ArrayList<>(), "level2," + j, j * 100L);
+                Category level2 = new Category(null, 2, null, new ArrayList<>(), "level2," + j, j * 100L);
                 level1.getChilds().add(level2);
 
                 int level3Count = 10 + random.nextInt(5);
                 for(int k = 0; k < level3Count; k++) {
-                    Category level3 = new Category(null, new ArrayList<>(), "level3," + k, k * 100L);
+                    Category level3 = new Category(null, 3, null, new ArrayList<>(), "level3," + k, k * 100L);
                     level2.getChilds().add(level3);
                 }
             }
