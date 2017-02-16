@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableCircuitBreaker
+@EnableCircuitBreaker // 开启断路器功能
 @Import(RootConfig.class)
 public class HomeApplication {
     public static void main(String[] args) {

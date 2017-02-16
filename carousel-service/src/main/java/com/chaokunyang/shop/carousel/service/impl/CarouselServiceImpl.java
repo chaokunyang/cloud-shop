@@ -34,4 +34,9 @@ public class CarouselServiceImpl implements CarouselService {
     public Carousel save(Carousel carousel) {
         return carouselRepository.save(carousel);
     }
+
+    @Override
+    public void delete(Long id) {
+        carouselRepository.delete(id);
+    }
 }

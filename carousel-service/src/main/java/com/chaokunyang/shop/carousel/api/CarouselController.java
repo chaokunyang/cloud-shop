@@ -39,7 +39,7 @@ public class CarouselController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Carousel get(@PathVariable Long id) {
         ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/carousels, get, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",carousel: " + id);
+        logger.info("/carousels, method: get, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",carousel: " + id);
         Carousel carousel = carouselService.findOne(id);
         return carousel;
     }
@@ -63,8 +63,15 @@ public class CarouselController {
         return responseEntity;
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id) {
+        ServiceInstance instance = client.getLocalServiceInstance();
+        logger.info("/carousels, method: delete, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",carousel: " + id);
+        carouselService.delete(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public List<Carousel> carousels(String usedFor) {
+    public List<Carousel> carousels(@RequestParam(value = "usedFor", defaultValue = "home") String usedFor) {
         ServiceInstance instance = client.getLocalServiceInstance();
         logger.info("/carousel, get, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",usedFor: " + usedFor);
         List<Carousel> carousels = carouselService.findByUsedFor(usedFor);

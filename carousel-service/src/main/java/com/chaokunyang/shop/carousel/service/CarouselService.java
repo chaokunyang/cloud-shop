@@ -18,4 +18,6 @@ public interface CarouselService {
 
     Carousel save(Carousel carousel);
 
+    void delete(Long id);
+
 }

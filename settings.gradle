@@ -1,6 +1,6 @@
 rootProject.name = 'shop'
 include 'shop-home'
-include 'shop-home-admin'
+include 'shop-admin'
 include 'eureka-server'
 include 'category-service'
 include 'carousel-service'
