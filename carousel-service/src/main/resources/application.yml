@@ -1,6 +1,6 @@
 spring:
   application:
-    name: category-service
+    name: carousel-service
   jpa:
 #    hibernate:
 #      ddl-auto:
@@ -19,7 +19,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
 server:
-  port: 2222
+  port: 2232
 
 eureka:
   client:

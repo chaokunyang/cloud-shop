@@ -1,8 +1,8 @@
 spring:
   application:
-    name: home-app
+    name: admin-app
 server:
-  port: 3333
+  port: 8443
 eureka:
   client:
     serviceUrl:

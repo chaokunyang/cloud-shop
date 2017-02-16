@@ -20,9 +20,9 @@ public class Category implements Serializable {
     private Long id;
 
     @Column(name = "parent_id")
-    private Category parentId;
+    private Long parentId; // childs建立映射时默认使用的是主键id，而主键是Long，对应bigint，parentId如果是String则对应VARCHAR(255)，两个类型不一样，因此无法建立外键约束成功
 
-    @OneToMany(targetEntity = Category.class, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "parent_id")
     @OrderBy(value = "order_number ASC")
     private List<Category> childs;
@@ -43,7 +43,7 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public Category(Category parentId, List<Category> childs, String name, Long orderNumber) {
+    public Category(Long parentId, List<Category> childs, String name, Long orderNumber) {
         this.parentId = parentId;
         this.childs = childs;
         this.name = name;
@@ -58,11 +58,11 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public Category getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Category parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 
@@ -88,5 +88,16 @@ public class Category implements Serializable {
 
     public void setOrderNumber(Long orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", childs=" + childs +
+                ", name='" + name + '\'' +
+                ", orderNumber=" + orderNumber +
+                '}';
     }
 }

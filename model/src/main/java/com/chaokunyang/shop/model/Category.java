@@ -13,7 +13,7 @@ public class Category implements Serializable {
 
     private Long id;
 
-    private Category parentId;
+    private Long parentId;
 
     private List<Category> childs;
 
@@ -30,7 +30,7 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public Category(Category parentId, List<Category> childs, String name, Long orderNumber) {
+    public Category(Long parentId, List<Category> childs, String name, Long orderNumber) {
         this.parentId = parentId;
         this.childs = childs;
         this.name = name;
@@ -45,11 +45,11 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public Category getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Category parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 
@@ -75,5 +75,16 @@ public class Category implements Serializable {
 
     public void setOrderNumber(Long orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", childs=" + childs +
+                ", name='" + name + '\'' +
+                ", orderNumber=" + orderNumber +
+                '}';
     }
 }

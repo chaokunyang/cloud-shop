@@ -1,7 +1,7 @@
 package com.chaokunyang.shop.category.api;
 
-import com.chaokunyang.shop.category.data.CategoryRepository;
 import com.chaokunyang.shop.category.model.Category;
+import com.chaokunyang.shop.category.service.CategoryService;
 import com.chaokunyang.shop.commons.api.Error;
 import com.chaokunyang.shop.commons.api.ResourceNotFoundException;
 import org.apache.log4j.LogManager;
@@ -31,23 +31,24 @@ public class CategoryController {
     private DiscoveryClient client;
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
+    /*@RequestMapping(value = "/category/{id}", method = RequestMethod.GET, produces = "application/json")*/
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Category get(@PathVariable Long id) {
         ServiceInstance instance = client.getLocalServiceInstance();
-        Category category = categoryRepository.findOne(id);
-        logger.info("/get, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",category id:" + category.getId() + ",category name:" + category.getName());
+        Category category = categoryService.findOne(id);
+        logger.info("/category, host:" + instance.getHost() + ", serviceId: " + instance.getServiceId() + ",category id: " + category.getId() + ",category name: " + category.getName());
         return category;
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> save(Category category, UriComponentsBuilder ucb) {
+    public ResponseEntity<Category> save(@RequestBody Category category, UriComponentsBuilder ucb) {
         ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/post, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",category id:" + category.getId() + ",category name:" + category.getName());
+        logger.info("/category, host:" + instance.getHost() + ", serviceId:" + instance.getServiceId() + ",category id:" + category.getId() + ",category name:" + category.getName());
 
-        Category saved = categoryRepository.save(category);
+        Category saved = categoryService.save(category);
 
         HttpHeaders headers = new HttpHeaders();
         URI locationUri = ucb.path("/category/")

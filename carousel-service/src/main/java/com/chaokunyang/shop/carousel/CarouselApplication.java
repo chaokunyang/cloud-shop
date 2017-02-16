@@ -1,19 +1,19 @@
-package com.chaokunyang.shop.home.service;
+package com.chaokunyang.shop.carousel;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * 首页服务Service
+ * 轮播服务
  *
  * @author yangck
- * @create 2017-02-15 11:10
+ * @create 2017-02-16 10:14
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class HomeServiceApplication {
+public class CarouselApplication {
     public static void main(String[] args) {
-        new SpringApplicationBuilder(HomeServiceApplication.class).web(true).run(args);
+        new SpringApplicationBuilder(CarouselApplication.class).web(true).run(args);
     }
 }
