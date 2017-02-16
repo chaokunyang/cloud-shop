@@ -24,7 +24,7 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(Map<String, Object> model) {
-        Category category = homeService.getCategory(1L);
+        Category category = homeService.getCategory(-1L);
         List<Carousel> carousels = homeService.getCarousels("home");
         // 楼层
         model.put("category", category);

@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * Created by yangck on 2017/2/16.
  */
@@ -32,11 +35,33 @@ public class CategoryServiceApplicationTest {
 
     @Test
     public void testData() {
-        categoryRepository.save(new Category(null, null, "testCategory1", 1L));
-        categoryRepository.save(new Category(null, null, "testCategory2", 100L));
-        categoryRepository.save(new Category(null, null, "testCategory3", 200L));
-        categoryRepository.save(new Category(null, null, "testCategory4", 300L));
+        Category top = new Category(null, new ArrayList<>(), "top", -1L);
 
+        Random random = new Random();
+        for(int i = 0; i < 10; i++) {
+            Category level1 = new Category(null, new ArrayList<>(), "level1," + i, i * 100L);
+            top.getChilds().add(level1);
+
+            int level2Count = 5 + random.nextInt(3);
+            for(int j = 0; j < level2Count; j++) {
+                Category level2 = new Category(null, new ArrayList<>(), "level2," + j, j * 100L);
+                level1.getChilds().add(level2);
+
+                int level3Count = 10 + random.nextInt(5);
+                for(int k = 0; k < level3Count; k++) {
+                    Category level3 = new Category(null, new ArrayList<>(), "level3," + k, k * 100L);
+                    level2.getChilds().add(level3);
+                }
+            }
+        }
+
+        categoryRepository.save(top);
+
+    }
+
+    @Test
+    public void getTestData() {
+        Category category = categoryRepository.findOne(-1L);
     }
 
     @Test
