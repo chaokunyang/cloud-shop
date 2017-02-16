@@ -24,12 +24,12 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link th:href="@{/carousel.css}" rel="stylesheet"/>
+    <link href="/static/css/carousel.css" th:href="@{/carousel.css}" rel="stylesheet"/>
+    <link href="/static/css/home.css" th:href="@{/carousel.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="navbar-wrapper">
     <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -54,6 +54,29 @@
     </div>
 </div>
 
+<!-- 分类 -->
+<div id="category">
+    <!--/*@thymesVar id="category" type="com.chaokunyang.shop.model.Category"*/-->
+    <ul th:each="categoryl1 : ${category.getChilds()}">
+        <li>
+            <span th:text="${categoryl1.name}">l1 category element name</span>
+            <div class="level1">
+                <ul th:each="categoryl2 : ${categoryl1.getChilds()}">
+                    <li>
+                        <span th:text="${categoryl2.name}">l2 category element name</span>
+                        <div class="level2">
+                            <ul th:each="categoryl3 : ${categoryl2.getChilds()}">
+                                <li>
+                                    <span th:text="${categoryl3.name}">l3 category element name</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
 
 <!-- Carousel
 ================================================== -->

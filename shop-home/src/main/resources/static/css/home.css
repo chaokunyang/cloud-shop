@@ -1,0 +1,9 @@
+#category {
+    width: 40%;
+    display: inline-block;
+    position: relative;
+}
+#myCarousel {
+    width: 60%;
+    display: inline-block;
+}
