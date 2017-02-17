@@ -1,7 +1,7 @@
-package com.chaokunyang.shop.admin.service.fallback;
+package com.chaokunyang.shop.service.fallback;
 
-import com.chaokunyang.shop.admin.service.CarouselService;
 import com.chaokunyang.shop.model.Carousel;
+import com.chaokunyang.shop.service.CarouselService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +15,7 @@ import java.util.List;
  * @create 2017-02-16 17:32
  */
 public class CarouselServiceFallback implements CarouselService {
+
     private Logger logger = LogManager.getLogger(getClass());
 
     @Override

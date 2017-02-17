@@ -39,25 +39,28 @@ body {
 
 /* Carousel base class */
 .carousel {
-    height: 500px;
+    height: 300px;
     margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-    height: 500px;
-    background-color: #777;
+    height: 300px;
+    /*background-color: #777;*/
 }
 .carousel-inner > .item > img {
     position: absolute;
     top: 0;
     left: 0;
     min-width: 100%;
-    height: 500px;
+    height: 300px;
 }
 
 
