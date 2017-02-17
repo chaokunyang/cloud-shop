@@ -76,25 +76,26 @@
         </ul>
     </div>
 
+    <!--/*@thymesVar id="carousels" type="java.util.List<com.chaokunyang.shop.model.Carousel>"*/-->
     <!-- Carousel
 ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <!--<li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>-->
+            <li data-target="#myCarousel" class="active" th:each="carousel, iterStat : ${carousels}" th:class="${iterStat.index == 0} ? 'active'" th:attr="data-slide-to=${iterStat.index}">
+            </li>
+            <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img class="first-slide" src="" alt="First slide" />
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>轮播1</h1>
-                        <p>轮播1</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">查看详情</a></p>
+            <div th:each="carousel, iterStat : ${carousels}" th:class="${iterStat.index == 0} ? 'item active' : 'item'">
+                <a th:href="${carousel.hrefUrl}">
+                    <img class="first-slide" th:src="${carousel.pictureUrl}" alt="First slide" />
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <p th:text="${carousel.body}"></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 

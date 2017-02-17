@@ -13,18 +13,18 @@ import java.util.List;
  * @author yangck
  * @create 2017-02-16 17:29
  */
-@FeignClient(value = "carousel-service", fallback = CarouselServiceFallback.class)
+@FeignClient(value = "CAROUSEL-SERVICE", fallback = CarouselServiceFallback.class)
 public interface CarouselService {
 
-    @RequestMapping(value = "/carousel", method = RequestMethod.GET)
+    @RequestMapping(value = "/carousels", method = RequestMethod.GET)
     List<Carousel> carousels(@RequestParam("usedFor") String usedFor);
 
-    @RequestMapping(value = "/carousel/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/carousels/{id}", method = RequestMethod.GET)
     Carousel get(@PathVariable("id") Long id);
 
-    @RequestMapping(value = "/carousel", method = RequestMethod.POST)
+    @RequestMapping(value = "/carousels", method = RequestMethod.POST)
     Carousel save(@RequestBody Carousel carousel);
 
-    @RequestMapping(value = "carousel/{id}", method = RequestMethod.DELETE)
-    void delete(@PathVariable Long id);
+    @RequestMapping(value = "carousels/{id}", method = RequestMethod.DELETE)
+    void delete(@PathVariable("id") Long id);
 }

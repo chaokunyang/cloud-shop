@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="商城首页"/>
+    <meta name="author" content="chaokunyang"/>
+    <link rel="icon" th:href="@{/favicon.ico}" />
+
+    <title>轮播管理</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link th:href="@{/ie10-viewport-bug-workaround.css}" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/admin.css" th:href="@{/css/admin.css}" rel="stylesheet"/>
+    <link href="../static/css/carousel.css" th:href="@{/css/carousel.css}" rel="stylesheet"/>
+</head>
+<body>
+    <h2>新建轮播</h2>
+    <form action="/carousel" method="post" class="carousel-form">
+        <fieldset>
+            <label>用途</label>
+            <input type="text" name="usedFor" id="usedFor" />
+        </fieldset>
+        <fieldset>
+            <label>排序数字</label>
+            <input type="text" name="orderNumber" id="orderNumber" />
+        </fieldset>
+        <fieldset>
+            <label>图片url</label>
+            <input type="text" name="pictureUrl" id="pictureUrl" />
+        </fieldset>
+        <fieldset>
+            <label>链接URI</label>
+            <input type="text" name="pictureUri" id="pictureUri" />
+        </fieldset>
+        <fieldset>
+            <label>链接地址</label>
+            <input type="text" name="hrefUrl" id="hrefUrl" />
+        </fieldset>
+        <fieldset>
+            <label>链接URI</label>
+            <input type="text" name="hrefUri" id="hrefUri" />
+        </fieldset>
+        <input type="submit" value="提交" />
+    </form>
+
+    <h2>首页已有轮播</h2>
+    <!--/*@thymesVar id="carousels" type="java.util.List<com.chaokunyang.shop.model.Carousel>"*/-->
+    <ul class="list-unstyled">
+        <li th:each="carousel : ${carousels}">
+            <form action="/carousel" method="post" class="carousel-form">
+                <input type="hidden" th:value="${carousel.getId()}"/>
+                <fieldset>
+                    <label>用途</label>
+                    <input type="text" name="usedFor" th:value="${carousel.usedFor}" />
+                </fieldset>
+                <fieldset>
+                    <label>排序数字</label>
+                    <input type="text" name="orderNumber" th:value="${carousel.orderNumber}" />
+                </fieldset>
+                <fieldset>
+                    <label>图片url</label>
+                    <input type="text" name="pictureUrl" th:value="${carousel.pictureUrl}"/>
+                </fieldset>
+                <fieldset>
+                    <label>链接URI</label>
+                    <input type="text" name="pictureUri" th:value="${carousel.pictureUri}" />
+                </fieldset>
+                <fieldset>
+                    <label>链接地址</label>
+                    <input type="text" name="hrefUrl" th:value="${carousel.hrefUrl}" />
+                </fieldset>
+                <fieldset>
+                    <label>链接URI</label>
+                    <input type="text" name="hrefUri" th:value="${carousel.hrefUri}" />
+                </fieldset>
+                <input type="submit" value="提交" />
+            </form>
+        </li>
+    </ul>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../static/js/ie10-viewport-bug-workaround.js" th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
+    <script src="../static/js/carousel.js" th:src="@{/js/carousel.js}"></script>
+
+</body>
+</html>

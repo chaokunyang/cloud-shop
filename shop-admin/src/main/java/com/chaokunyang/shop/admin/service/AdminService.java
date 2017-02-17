@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
  * @author yangck
  * @create 2017-02-16 16:45
  */
+@Deprecated
 @Service
 public class AdminService {
 

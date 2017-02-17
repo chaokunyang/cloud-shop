@@ -1,0 +1,11 @@
+.carousel-form {
+    width: 30em;
+    background-color: azure;
+    font-family: "Microsoft YaHei UI Light", sans-serif;
+}
+label {
+    width: 4em;
+    text-align: right;
+    display: inline-block;
+
+}

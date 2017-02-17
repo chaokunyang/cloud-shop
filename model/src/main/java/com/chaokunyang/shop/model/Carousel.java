@@ -45,10 +45,15 @@ public class Carousel {
      */
     private String hrefUri;
 
+    /**
+     * 主要内容
+     */
+    private String body;
+
     public Carousel() {
     }
 
-    public Carousel(Long id, String usedFor, Long orderNumber, String pictureUrl, String pictureUri, String hrefUrl, String hrefUri) {
+    public Carousel(Long id, String usedFor, Long orderNumber, String pictureUrl, String pictureUri, String hrefUrl, String hrefUri, String body) {
         this.id = id;
         this.usedFor = usedFor;
         this.orderNumber = orderNumber;
@@ -56,6 +61,7 @@ public class Carousel {
         this.pictureUri = pictureUri;
         this.hrefUrl = hrefUrl;
         this.hrefUri = hrefUri;
+        this.body = body;
     }
 
     public Long getId() {
@@ -112,5 +118,13 @@ public class Carousel {
 
     public void setHrefUri(String hrefUri) {
         this.hrefUri = hrefUri;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
