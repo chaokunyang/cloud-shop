@@ -8,5 +8,4 @@ include 'floor-service'
 include 'model'
 include 'commons'
 include 'api-gateway'
-include 'service-client'
 
