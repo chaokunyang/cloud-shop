@@ -1,0 +1,18 @@
+buildscript {
+    ext {
+        gradleDockerPluginVersion = '3.0.5'
+    }
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.bmuschko:gradle-docker-plugin:${gradleDockerPluginVersion}"
+    }
+}
+
+// apply plugin: 'com.bmuschko.docker-remote-api' // Remote API 插件
+// from a build file which is not the main build file , must apply plugin like so:
+apply plugin: 'com.bmuschko.gradle.docker.DockerRemoteApiPlugin'
+
+
