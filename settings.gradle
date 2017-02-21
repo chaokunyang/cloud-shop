@@ -11,4 +11,5 @@ include 'api-gateway'
 include 'news-service'
 include 'ad-service'
 include 'cms-service'
+include 'cache-service'
 

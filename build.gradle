@@ -22,6 +22,8 @@ allprojects {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'spring-boot'
+    sourceCompatibility = 1.8 // 必须在apply java插件之后
+    targetCompatibility = 1.8
     repositories {
         mavenCentral()
     }

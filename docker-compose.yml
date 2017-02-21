@@ -1,0 +1,28 @@
+version '1'
+services:
+  carousel-service:
+    container_name: "carousel-service"
+    image: chaokunyang/carousel-service
+    ports:
+      - 2232: 2232
+  floor-service:
+        container_name: "floor-service"
+        image: chaokunyang/floor-service
+        ports:
+          - 20000: 20000
+  news-service:
+      container_name: "news-service"
+      image: chaokunyang/news-service
+      ports:
+        - 20010: 20010
+  ads-service:
+        container_name: "ads-service"
+        image: chaokunyang/ads-service
+        ports:
+          - 20020: 20020
+  cms-service:
+    container_name: "cms-service"
+    image: chaokunyang/cms-service
+    ports:
+      - 20030: 20030
+
